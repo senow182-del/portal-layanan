@@ -3,19 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pos Kesehatan</title>
 <style>
-  /* RESET & BASE */
+  /* --- RESET & DASAR --- */
   html, body {
     margin: 0; padding: 0;
-    font-family: system-ui, -apple-system, sans-serif;
-    background: transparent;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f0f4f8; 
+    overflow-x: hidden;
   }
 
+  /* --- KONTAINER UTAMA --- */
   .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 15px;
+    max-width: 480px; 
+    margin: 40px auto; 
+    padding: 30px 20px;
+    background: #ffffff; 
+    border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(32, 94, 108, 0.1); 
     box-sizing: border-box;
+  }
+  
+  @media (max-width: 480px) {
+    .container { margin: 15px auto; border-radius: 16px; }
   }
 
   /* --- TOMBOL KEMBALI --- */
@@ -29,12 +39,12 @@
   }
   .btn-back:hover { background-color: #205E6C; color: #ffffff; transform: translateY(-2px); }
 
-  /* HEADER */
+  /* --- HEADER --- */
   .header-section { text-align: center; margin-bottom: 25px; }
   .page-title { color: #205E6C; font-weight: 800; font-size: 22px; margin: 0; }
-  .page-subtitle { font-size: 13px; color: #FFF; margin-top: 5px; }
+  .page-subtitle { font-size: 13px; color: #64748b; margin-top: 5px; }
 
-  /* 1. SOS */
+  /* 1. SOS CARD */
   .sos-card {
     background: linear-gradient(135deg, #d32f2f, #b71c1c);
     color: white; text-decoration: none; padding: 20px;
@@ -56,48 +66,84 @@
   .sos-text div:first-child { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
   .sos-text div:last-child { font-size: 12px; opacity: 0.9; margin-top: 2px; }
 
-  /* 2. FORM */
-  .form-card {
-    background: #205E6C; color: white; text-decoration: none;
-    padding: 15px 20px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 25px; box-shadow: 0 4px 10px rgba(32, 94, 108, 0.2);
-    transition: transform 0.2s;
+  /* 2. CUSTOM FORM KESEHATAN */
+  .ticket-form-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    margin-bottom: 25px;
   }
-  .form-card:hover { transform: translateY(-3px); background: #1a4f5b; }
-  .form-left { display: flex; align-items: center; gap: 15px; text-align: left; }
-  .form-title { font-weight: 700; font-size: 15px; display: block; }
-  .form-desc { font-size: 12px; opacity: 0.85; font-weight: 400; }
-  .arrow { font-weight: bold; font-size: 20px; }
 
-  /* 3. INFO */
+  .form-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9; padding-bottom: 12px;
+  }
+  .form-header-icon { font-size: 24px; }
+  .form-header-title { font-weight: 800; color: #205E6C; font-size: 16px; }
+
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block; font-size: 13px; font-weight: 700;
+    color: #475569; margin-bottom: 8px;
+  }
+  
+  .form-group input[type="text"], 
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid #cbd5e1;
+    border-radius: 10px; font-family: inherit; font-size: 14px;
+    box-sizing: border-box; background-color: #f8fafc; transition: all 0.2s;
+  }
+  
+  .form-group input[type="text"]:focus, 
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none; border-color: #205E6C; background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(32, 94, 108, 0.1);
+  }
+  
+  .form-group input[type="file"] {
+    width: 100%; padding: 10px; border: 1px dashed #cbd5e1;
+    border-radius: 10px; font-size: 12px; background-color: #f8fafc; color: #475569;
+  }
+
+  .btn-submit {
+    background: #205E6C; color: white; border: none; padding: 14px;
+    width: 100%; border-radius: 10px; font-weight: 800; font-size: 14px;
+    cursor: pointer; transition: background 0.2s; margin-top: 10px;
+  }
+  .btn-submit:hover { background: #164652; }
+  .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; }
+
+  /* 3. INFO & JADWAL JAGA */
   .info-container {
     background: white; border-radius: 16px; padding: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
     text-align: left;
   }
   .info-header {
     font-weight: 700; color: #205E6C; margin-bottom: 15px;
     display: flex; align-items: center; gap: 8px;
-    border-bottom: 1px dashed #ddd; padding-bottom: 10px;
+    border-bottom: 1px dashed #cbd5e1; padding-bottom: 10px;
   }
   .schedule-item {
     display: flex; justify-content: space-between;
-    margin-bottom: 12px; font-size: 13px; color: #444;
+    margin-bottom: 12px; font-size: 13px; color: #475569;
   }
   .schedule-label { font-weight: 600; }
   .schedule-time { background: #E0F2F1; color: #00695C; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; }
 
-  /* LIST OBAT (YANG AKAN BERUBAH OTOMATIS) */
+  /* LIST OBAT (DARI CSV) */
   .med-list {
-    margin-top: 15px; font-size: 13px; color: #555;
-    background: #f5f5f5; padding: 12px; border-radius: 8px;
-    line-height: 1.6; border-left: 4px solid #296374;
+    margin-top: 15px; font-size: 13px; color: #475569;
+    background: #f8fafc; padding: 12px; border-radius: 8px;
+    line-height: 1.6; border-left: 4px solid #205E6C;
   }
   .med-title { font-weight: 700; color: #333; margin-bottom: 5px; display: block; }
-  
-  /* Efek Loading */
-  .loading-text { color: #888; font-style: italic; }
+  .loading-text { color: #94a3b8; font-style: italic; }
 
 </style>
 </head>
@@ -105,33 +151,67 @@
 
 <div class="container">
 
-  <a href="index.html" class="btn-back">
-    <span>❮</span> Menu Utama
-  </a>
+  <div style="text-align: left;">
+    <a href="index.html" class="btn-back">
+      <span>❮</span> Menu Utama
+    </a>
+  </div>
 
   <div class="header-section">
-    <div class="page-title">🏥 Pos Kesehatan</div>
-    <div class="page-subtitle">Layanan Medis & P3K</div>
+    <h2 class="page-title">🏥 Pos Kesehatan</h2>
+    <p class="page-subtitle">Layanan Medis & P3K</p>
   </div>
 
   <a href="tel:0808067575" class="sos-card">
     <div class="sos-icon">📞</div>
     <div class="sos-text">
       <div>PANGGILAN DARURAT</div>
-      <div>Klik untuk telepon petugas</div>
+      <div>Klik untuk telepon petugas medis</div>
     </div>
   </a>
 
-  <a href="https://forms.gle/WYd26wRpUFf4gN1D6" target="_blank" class="form-card">
-    <div class="form-left">
-      <span style="font-size: 24px;">📝</span>
-      <div>
-        <span class="form-title">Formulir Keluhan</span>
-        <span class="form-desc">Request obat / lapor sakit ringan</span>
-      </div>
+  <div class="ticket-form-card">
+    <div class="form-header">
+      <div class="form-header-icon">📝</div>
+      <div class="form-header-title">Formulir Keluhan Medis</div>
     </div>
-    <span class="arrow">ᐳ</span>
-  </a>
+    
+    <form id="formKesehatan" name="submit-to-google-sheet">
+      
+      <div class="form-group">
+        <label for="nama">Nama Peserta</label>
+        <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
+      </div>
+
+      <div class="form-group">
+        <label for="lokasi">Kamar / Lokasi Saat Ini</label>
+        <input type="text" id="lokasi" name="lokasi" placeholder="Contoh: Gedung A Kamar 101 / Kelas Aula" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="keluhan">Detail Keluhan</label>
+        <textarea id="keluhan" name="keluhan" rows="2" placeholder="Contoh: Pusing, demam sejak pagi, atau luka lecet..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="permintaan">Kebutuhan / Permintaan</label>
+        <select id="permintaan" name="permintaan" required>
+          <option value="" disabled selected>-- Pilih Tindakan Medis --</option>
+          <option value="Minta Obat P3K">💊 Minta Obat P3K (Diantar/Ambil)</option>
+          <option value="Butuh Perawat">👩‍⚕️ Butuh Perawat untuk Diperiksa</option>
+          <option value="Darurat / Jemputan">🚑 DARURAT / Butuh Jemputan Evakuasi</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="foto">Lampirkan Foto <span style="font-weight: normal; color: #64748b;">(Opsional)</span></label>
+        <input type="file" id="foto" accept="image/png, image/jpeg, image/jpg">
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 5px;">*Bisa foto luka, gejala, atau dus obat lama jika ada.</div>
+      </div>
+      
+      <button type="submit" class="btn-submit" id="btnSubmit">KIRIM KE PETUGAS</button>
+    </form>
+  </div>
 
   <div class="info-container">
     <div class="info-header">
@@ -151,28 +231,77 @@
       <span class="med-title">💊 Obat Bebas Tersedia (P3K):</span>
       <span id="daftar-obat" class="loading-text">Memuat daftar obat...</span>
     </div>
-
   </div>
 
 </div>
 
 <script>
-  // --- KONFIGURASI ---
-  // Ganti link di bawah dengan Link CSV dari Google Sheet Anda
-  var sheetLink = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLJCoHgtUqQBuo7-Rwlbgnjt4yBhPUG0WnC8rY-MXPey3nOISj0B6afYZtLq6p4w-gFfisVNeox484/pub?gid=0&single=true&output=csv"; 
-  // -------------------
+  // ---------------------------------------------------------
+  // 1. SCRIPT PENARIK DATA OBAT DARI GOOGLE SHEETS (CSV)
+  // ---------------------------------------------------------
+  var sheetLinkCSV = "https://docs.google.com/spreadsheets/d/1X3dugIjPYg3r3UbCCZjNYTViiO35qiCHe0aXlXhHcj0/edit?usp=sharing"; 
 
-  fetch(sheetLink)
+  fetch(sheetLinkCSV)
     .then(response => response.text())
     .then(data => {
-      // Masukkan data dari Sheet ke dalam elemen HTML
       document.getElementById("daftar-obat").innerText = data;
       document.getElementById("daftar-obat").classList.remove("loading-text");
     })
     .catch(error => {
-      document.getElementById("daftar-obat").innerText = "Gagal memuat data. Silakan hubungi petugas.";
-      console.error('Error:', error);
+      document.getElementById("daftar-obat").innerText = "Gagal memuat data obat. Silakan hubungi petugas.";
     });
+
+  // ---------------------------------------------------------
+  // 2. SCRIPT PENGIRIM FORMULIR (BESERTA FOTO) KE APPS SCRIPT
+  // ---------------------------------------------------------
+  // PENTING: GANTI TEKS DI BAWAH INI DENGAN URL WEB APP KESEHATAN MILIK ANDA!
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyfopXQxy_B4i_c-kzdhZrYJ8RGNzydEgaMdK2lYbATDVi7fK5FUi8dQTl_3u_lFjc0/exec';
+  
+  const form = document.forms['submit-to-google-sheet'];
+  const btnSubmit = document.getElementById('btnSubmit');
+  const fileInput = document.getElementById('foto');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault(); 
+    
+    const originalText = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = 'MENGIRIM... ⏳';
+    btnSubmit.disabled = true;
+
+    const formData = new FormData(form);
+    const file = fileInput.files[0];
+
+    if (file) {
+      btnSubmit.innerHTML = 'MENGUNGGAH FOTO... ⏳';
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64Data = event.target.result.split(',')[1];
+        formData.append('fileData', base64Data);
+        formData.append('mimeType', file.type);
+        formData.append('fileName', file.name);
+        sendDataToGAS(formData, originalText);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      sendDataToGAS(formData, originalText);
+    }
+  });
+
+  function sendDataToGAS(formData, originalText) {
+    fetch(scriptURL, { method: 'POST', body: formData })
+      .then(response => {
+        alert('✅ Data berhasil dikirim! Petugas medis akan segera merespon atau mendatangi lokasi Anda.');
+        form.reset(); 
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.disabled = false;
+      })
+      .catch(error => {
+        alert('❌ Gagal mengirim laporan. Periksa koneksi internet Anda atau gunakan tombol darurat.');
+        console.error('Error!', error.message);
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.disabled = false;
+      });
+  }
 </script>
 
 </body>
