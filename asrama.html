@@ -251,7 +251,7 @@
   function sendDataToGAS(formData, originalText) {
     fetch(scriptURL, { method: 'POST', body: formData })
       .then(response => {
-        alert('✅ Laporan berhasil dikirim! Tim kami akan segera menindaklanjuti.');
+        alert('✅ Laporan berhasil dikirim! Petugas kami akan segera menindaklanjuti.');
         form.reset(); 
         btnSubmit.innerHTML = originalText;
         btnSubmit.disabled = false;
@@ -267,3 +267,4 @@
 
 </body>
 </html>
+
