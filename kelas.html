@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  /* RESET & BASE */
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: transparent;
+  }
+
+  .container {
+    padding: 10px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* --- TOMBOL KEMBALI (MODERN KAPSUL) --- */
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    color: #205E6C;
+    border: 1px solid #205E6C;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    margin-bottom: 25px; /* Jarak ke Judul */
+  }
+  .btn-back:hover {
+    background-color: #205E6C;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(32, 94, 108, 0.2);
+  }
+
+  /* KARTU MENU (Gaya Konsisten) */
+  .card {
+    background: #205E6C; /* Warna Teal Utama */
+    color: white;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 6px rgba(32, 94, 108, 0.15);
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+  }
+
+  .icon {
+    font-size: 24px;
+    background: rgba(255,255,255,0.15);
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .content {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .desc {
+    font-size: 12px;
+    opacity: 0.85;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  /* TOMBOL */
+  .btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #205E6C;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+
+  .btn:hover {
+    background: #f0f0f0;
+  }
+
+  /* FOOTER INFO */
+  .footer-info {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f4f4f4; /* Background abu tipis agar beda dari bg situs */
+    border-radius: 8px;
+    border-left: 4px solid #205E6C;
+    display: flex; gap: 10px;
+  }
+  .footer-icon { font-size: 20px; }
+  .footer-text { font-size: 12px; line-height: 1.5; color: #444; } /* Warna Gelap */
+  .footer-title { font-weight: 700; display: block; color: #205E6C; margin-bottom: 2px; }  
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="btn-back">
+    <span>❮</span> Menu Utama
+  </a>
+
+  <div class="card">
+    <div class="icon">🖥️</div>
+    <div class="content">
+      <div class="title">Sarana Kelas</div>
+      <div class="desc">LCD, sound, AC kelas</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScoa-jcZeemrXMeb2EUU87RHhzMRrtMlKhvozz1gDq8UxBJyg/viewform?usp=pp_url&entry.460813880=Sarana+Kelas" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon">⏰</div>
+    <div class="content">
+      <div class="title">Jadwal Diklat</div>
+      <div class="desc">Perubahan / konfirmasi</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScoa-jcZeemrXMeb2EUU87RHhzMRrtMlKhvozz1gDq8UxBJyg/viewform?usp=pp_url&entry.460813880=Jadwal+Diklat" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon">👨‍🏫</div>
+    <div class="content">
+      <div class="title">Fasilitator</div>
+      <div class="desc">Kehadiran / layanan</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScoa-jcZeemrXMeb2EUU87RHhzMRrtMlKhvozz1gDq8UxBJyg/viewform?usp=pp_url&entry.460813880=Fasilitator" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="footer-info">
+    <div class="footer-icon">ℹ️</div>
+    <div class="footer-text">
+      <span class="footer-title">Alur Laporan</span>
+      Laporan Anda akan masuk ke WhatsApp teknisi jaga. Mohon tunggu respon maksimal 1x24 jam.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

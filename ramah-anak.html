@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* --- RESET --- */
+  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; background: transparent; }
+  .container { max-width: 600px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+
+  /* --- TOMBOL KEMBALI --- */
+  .btn-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    background-color: #ffffff; color: #205E6C; border: 1px solid #205E6C;
+    padding: 8px 20px; border-radius: 50px; text-decoration: none;
+    font-size: 13px; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 20px; transition: all 0.2s;
+  }
+  .btn-back:hover { background-color: #205E6C; color: #ffffff; }
+
+  /* HEADER */
+  .header-section { text-align: center; margin-bottom: 25px; }
+  .page-title { color: #205E6C; font-weight: 800; font-size: 22px; margin: 0; }
+  .page-subtitle { font-size: 13px; color: #296374; margin-top: 5px; }
+
+  /* 1. STATUS KARTU (DENGAN LABEL DIBUKA) */
+  .status-card {
+    background: #E8F5E9; /* Hijau Muda Lembut */
+    border: 2px solid #4CAF50; /* Hijau Tegas */
+    padding: 20px; border-radius: 12px; text-align: center;
+    margin-bottom: 20px; color: #2E7D32; position: relative;
+  }
+  
+  /* LABEL "DIBUKA" */
+  .status-badge {
+    background: #4CAF50; color: white;
+    padding: 5px 15px; border-radius: 50px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.5px;
+    display: inline-block; margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+  }
+
+  .status-icon { font-size: 40px; margin-bottom: 5px; display: block; }
+
+  /* 2. TOMBOL CCTV */
+  .cctv-card {
+    background: linear-gradient(135deg, #FF7043, #F4511E);
+    color: white; text-decoration: none; padding: 15px 20px;
+    border-radius: 16px; display: flex; align-items: center; gap: 15px;
+    margin-bottom: 20px; box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+    position: relative; overflow: hidden;
+  }
+  .cctv-icon { font-size: 28px; background: rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .rec-dot { width: 10px; height: 10px; background: red; border-radius: 50%; position: absolute; top: 15px; right: 15px; animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* 3. LIST FASILITAS */
+  .facility-box {
+    background: white; border: 1px solid #eee;
+    padding: 15px; border-radius: 12px; margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .box-title { font-weight: 800; color: #333; margin-bottom: 12px; border-bottom: 2px solid #FFC107; display: inline-block; padding-bottom: 3px; }
+  
+  .fac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .fac-item { background: #f9f9f9; padding: 10px; border-radius: 8px; font-size: 12px; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #555; }
+
+  /* 4. TOMBOL LOKASI (DENGAN SUBTEKS GEDUNG H) */
+  .btn-map {
+    background: #205E6C; color: white; text-decoration: none;
+    padding: 15px; border-radius: 12px;
+    display: flex; flex-direction: column; /* Ubah jadi kolom agar teks bertumpuk */
+    align-items: center; justify-content: center; gap: 4px;
+    box-shadow: 0 4px 10px rgba(32, 94, 108, 0.2);
+    transition: transform 0.2s;
+  }
+  .btn-map:hover { background: #1a4f5b; transform: translateY(-2px); }
+  
+  .map-title { font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .map-sub { font-size: 11px; opacity: 0.8; font-weight: 400; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="btn-back">
+    <span>❮</span> Menu Utama
+  </a>
+
+  <div class="header-section">
+    <div class="page-title">👶 Ruang Ramah Anak</div>
+    <div class="page-subtitle">Area Bermain & Fasilitas lainnya</div>
+  </div>
+
+  <div class="status-card">
+    <div class="status-badge">🟢 DIBUKA / OPEN</div>
+    <span class="status-icon">🧸</span>
+    <div style="font-weight: 800; font-size: 18px; margin-bottom: 5px;">AREA BERMAIN BERSAMA</div>
+    <div style="font-size: 13px;">Silakan gunakan fasilitas ini untuk kenyamanan putra-putri Anda selama di lokasi.</div>
+  </div>
+
+  <a href="LINK_CCTV_DISINI" target="_blank" class="cctv-card">
+    <div class="rec-dot"></div>
+    <div class="cctv-icon">📹</div>
+    <div>
+      <div style="font-weight:800; font-size:15px;">PANTAU RUANGAN</div>
+      <div style="font-size:11px; opacity:0.9;">Cek kepadatan area bermain</div>
+    </div>
+  </a>
+
+  <div class="facility-box">
+    <div class="box-title">✨ Fasilitas Tersedia:</div>
+    <div class="fac-grid">
+      <div class="fac-item"><span>🧩</span> Mainan Edukatif</div>
+      <div class="fac-item"><span>🚽</span> Toilet Anak</div>
+      <div class="fac-item"><span>❄️</span> Ruangan AC</div>
+      <div class="fac-item"><span>🧼</span> Sanitizer/Wastafel</div>
+    </div>
+    <div style="margin-top:15px; font-size:11px; color:#777; font-style:italic;">
+      *Harap menjaga kebersihan & merapikan mainan setelah digunakan.
+    </div>
+  </div>
+
+  <a href="https://maps.app.goo.gl/JDUhWyHAEHc8vDc76" target="_blank" class="btn-map">
+    <div class="map-title">📍 Cek Lokasi Ruangan</div>
+    <div class="map-sub">(Berada di sebelah Kantin Gedung H)</div>
+  </a>
+
+</div>
+
+</body>
+</html>

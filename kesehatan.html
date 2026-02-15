@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* RESET & BASE */
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: transparent;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  /* --- TOMBOL KEMBALI --- */
+  .btn-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    background-color: #ffffff; color: #205E6C; border: 1px solid #205E6C;
+    padding: 8px 20px; border-radius: 50px; text-decoration: none;
+    font-size: 13px; font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease; margin-bottom: 25px;
+  }
+  .btn-back:hover { background-color: #205E6C; color: #ffffff; transform: translateY(-2px); }
+
+  /* HEADER */
+  .header-section { text-align: center; margin-bottom: 25px; }
+  .page-title { color: #205E6C; font-weight: 800; font-size: 22px; margin: 0; }
+  .page-subtitle { font-size: 13px; color: #FFF; margin-top: 5px; }
+
+  /* 1. SOS */
+  .sos-card {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: white; text-decoration: none; padding: 20px;
+    border-radius: 16px; display: flex; align-items: center; gap: 15px;
+    margin-bottom: 20px; box-shadow: 0 4px 15px rgba(198, 40, 40, 0.4);
+    border: 1px solid #b71c1c; animation: pulse 2s infinite;
+  }
+  .sos-card:active { transform: scale(0.95); animation: none; }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+  }
+  .sos-icon {
+    font-size: 32px; background: rgba(255,255,255,0.2);
+    width: 50px; height: 50px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sos-text div:first-child { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; }
+  .sos-text div:last-child { font-size: 12px; opacity: 0.9; margin-top: 2px; }
+
+  /* 2. FORM */
+  .form-card {
+    background: #205E6C; color: white; text-decoration: none;
+    padding: 15px 20px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 25px; box-shadow: 0 4px 10px rgba(32, 94, 108, 0.2);
+    transition: transform 0.2s;
+  }
+  .form-card:hover { transform: translateY(-3px); background: #1a4f5b; }
+  .form-left { display: flex; align-items: center; gap: 15px; text-align: left; }
+  .form-title { font-weight: 700; font-size: 15px; display: block; }
+  .form-desc { font-size: 12px; opacity: 0.85; font-weight: 400; }
+  .arrow { font-weight: bold; font-size: 20px; }
+
+  /* 3. INFO */
+  .info-container {
+    background: white; border-radius: 16px; padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #e0e0e0;
+    text-align: left;
+  }
+  .info-header {
+    font-weight: 700; color: #205E6C; margin-bottom: 15px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px dashed #ddd; padding-bottom: 10px;
+  }
+  .schedule-item {
+    display: flex; justify-content: space-between;
+    margin-bottom: 12px; font-size: 13px; color: #444;
+  }
+  .schedule-label { font-weight: 600; }
+  .schedule-time { background: #E0F2F1; color: #00695C; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+
+  /* LIST OBAT (YANG AKAN BERUBAH OTOMATIS) */
+  .med-list {
+    margin-top: 15px; font-size: 13px; color: #555;
+    background: #f5f5f5; padding: 12px; border-radius: 8px;
+    line-height: 1.6; border-left: 4px solid #296374;
+  }
+  .med-title { font-weight: 700; color: #333; margin-bottom: 5px; display: block; }
+  
+  /* Efek Loading */
+  .loading-text { color: #888; font-style: italic; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="btn-back">
+    <span>❮</span> Menu Utama
+  </a>
+
+  <div class="header-section">
+    <div class="page-title">🏥 Pos Kesehatan</div>
+    <div class="page-subtitle">Layanan Medis & P3K</div>
+  </div>
+
+  <a href="tel:0808067575" class="sos-card">
+    <div class="sos-icon">📞</div>
+    <div class="sos-text">
+      <div>PANGGILAN DARURAT</div>
+      <div>Klik untuk telepon petugas</div>
+    </div>
+  </a>
+
+  <a href="https://forms.gle/WYd26wRpUFf4gN1D6" target="_blank" class="form-card">
+    <div class="form-left">
+      <span style="font-size: 24px;">📝</span>
+      <div>
+        <span class="form-title">Formulir Keluhan</span>
+        <span class="form-desc">Request obat / lapor sakit ringan</span>
+      </div>
+    </div>
+    <span class="arrow">ᐳ</span>
+  </a>
+
+  <div class="info-container">
+    <div class="info-header">
+      <span>👨‍⚕️</span> Jadwal Petugas Jaga
+    </div>
+    
+    <div class="schedule-item">
+      <span class="schedule-label">Senin - Jum'at</span>
+      <span class="schedule-time">07.30 - 16.00</span>
+    </div>
+    <div class="schedule-item">
+      <span class="schedule-label">Sabtu - Minggu</span>
+      <span class="schedule-time">On Call (Darurat)</span>
+    </div>
+
+    <div class="med-list">
+      <span class="med-title">💊 Obat Bebas Tersedia (P3K):</span>
+      <span id="daftar-obat" class="loading-text">Memuat daftar obat...</span>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // --- KONFIGURASI ---
+  // Ganti link di bawah dengan Link CSV dari Google Sheet Anda
+  var sheetLink = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLJCoHgtUqQBuo7-Rwlbgnjt4yBhPUG0WnC8rY-MXPey3nOISj0B6afYZtLq6p4w-gFfisVNeox484/pub?gid=0&single=true&output=csv"; 
+  // -------------------
+
+  fetch(sheetLink)
+    .then(response => response.text())
+    .then(data => {
+      // Masukkan data dari Sheet ke dalam elemen HTML
+      document.getElementById("daftar-obat").innerText = data;
+      document.getElementById("daftar-obat").classList.remove("loading-text");
+    })
+    .catch(error => {
+      document.getElementById("daftar-obat").innerText = "Gagal memuat data. Silakan hubungi petugas.";
+      console.error('Error:', error);
+    });
+</script>
+
+</body>
+</html>

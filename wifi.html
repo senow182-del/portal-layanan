@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* --- RESET --- */
+  html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; background: transparent; }
+  .container { max-width: 600px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+
+  /* --- TOMBOL KEMBALI --- */
+  .btn-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    background-color: #ffffff; color: #205E6C; border: 1px solid #205E6C;
+    padding: 8px 20px; border-radius: 50px; text-decoration: none;
+    font-size: 13px; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 25px; transition: all 0.2s;
+  }
+  .btn-back:hover { background-color: #205E6C; color: #ffffff; }
+
+  .header-section { text-align: center; margin-bottom: 25px; }
+  .page-title { color: #205E6C; font-weight: 800; font-size: 20px; margin: 0; }
+  .page-subtitle { font-size: 13px; color: #FFF; margin-top: 5px; }
+
+  /* --- GRID --- */
+  .wifi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+
+  /* --- KARTU WIFI --- */
+  .wifi-card {
+    background: #ffffff; border-radius: 12px; padding: 15px 10px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    border: 1px solid #e0e0e0; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+  .wifi-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  
+  .qr-img { width: 90px; height: 90px; margin-bottom: 8px; border-radius: 6px; }
+  .wifi-ssid { font-size: 13px; font-weight: 700; color: #205E6C; margin-bottom: 4px; line-height: 1.2; }
+
+  /* --- TEXT PASSWORD KECIL --- */
+  .wifi-pass-small {
+    font-size: 11px; color: #555; background: #f4f6f7;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 10px;
+    font-family: monospace; border: 1px solid #e0e0e0;
+  }
+
+  /* --- TOMBOL SMART CONNECT (JAVASCRIPT) --- */
+  .btn-smart {
+    background: #205E6C; color: white; border: none;
+    width: 100%; padding: 10px; border-radius: 8px;
+    font-size: 11px; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    transition: background 0.2s; box-shadow: 0 2px 4px rgba(32, 94, 108, 0.2);
+  }
+  .btn-smart:hover { background: #164652; }
+  .btn-smart:active { transform: scale(0.95); }
+  
+  /* Saat sukses tersalin/konek */
+  .btn-smart.active { background: #2e7d32; }
+
+  /* --- TOMBOL LAPOR --- */
+  .report-btn {
+    background: #d32f2f; color: white; text-decoration: none;
+    padding: 15px 20px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
+  }
+  .report-left { display: flex; align-items: center; gap: 15px; }
+  .report-icon { font-size: 24px; background: rgba(255,255,255,0.2); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .report-text { font-weight: 700; font-size: 14px; display: block; }
+  .report-sub { font-size: 11px; opacity: 0.9; font-weight: 400; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="btn-back">
+    <span>❮</span> Menu Utama
+  </a>
+
+  <div class="header-section">
+    <div class="page-title">Akses Wi-Fi</div>
+    <div class="page-subtitle">Pilih lokasi untuk tersambung</div>
+  </div>
+
+  <div class="wifi-grid">
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Gedung%20A;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Gedung A</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Gedung%20A', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Kelas%20Aula;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Kelas Aula</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Kelas%20Aula', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Kelas%20Rajawali;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Kelas Rajawali</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Kelas%20Rajawali', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Kelas%20Cendrawasih;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Kelas Cendrawasih</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Kelas%20Cendrawasih', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Gedung%20E%20Lt%201;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Gedung E Lt 1</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Gedung%20E%20Lt%201', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Gedung%20E%20Lt%202;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Gedung E Lt 2</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Gedung%20E%20Lt%202', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Gedung%20F%20Lt%201;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Gedung F Lt 1</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Gedung%20F%20Lt%201', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+    <div class="wifi-card">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI:T:WPA;S:Gedung%20F%20Lt.%202;P:tes1234;;" class="qr-img">
+      <div class="wifi-ssid">Gedung F Lt. 2</div>
+      <div class="wifi-pass-small">Pass: tes1234</div>
+      <button class="btn-smart" onclick="smartConnect(this, 'Gedung%20F%20Lt.%202', 'tes1234')">
+        🚀 Sambungkan
+      </button>
+    </div>
+
+  </div>
+
+  <a href="https://forms.gle/KNasZJCPJ2iHLFXk6" target="_blank" class="report-btn">
+    <div class="report-left">
+      <div class="report-icon">📶</div>
+      <div>
+        <span class="report-text">Lapor Gangguan</span>
+        <span class="report-sub">Sinyal lemot, putus, atau gagal login</span>
+      </div>
+    </div>
+    <span style="font-weight:bold; font-size:18px;">ᐳ</span>
+  </a>
+
+</div>
+
+<script>
+  function smartConnect(btn, ssid, password) {
+    // 1. Ubah Tampilan Tombol (Feedback)
+    var originalText = btn.innerHTML;
+    btn.innerHTML = "Mencoba...";
+    btn.classList.add("active");
+
+    // 2. Salin Password (Backup Plan - PENTING)
+    // Jika konek otomatis gagal, password sudah ada di tangan user
+    navigator.clipboard.writeText(password).then(function() {
+       // Silent success
+    }).catch(function() {
+       // Silent fail
+    });
+
+    // 3. Eksekusi Perintah Wi-Fi Tanpa Buka Tab Baru
+    // Menggunakan location.href memaksa browser pindah, bukan buka window baru
+    setTimeout(function() {
+      window.location.href = "WIFI:T:WPA;S:" + ssid + ";P:" + password + ";;";
+      
+      // 4. Update Pesan untuk User
+      btn.innerHTML = "✅ Pass Tersalin";
+      
+      // 5. Reset tombol setelah 3 detik
+      setTimeout(function() {
+        btn.innerHTML = originalText;
+        btn.classList.remove("active");
+      }, 3000);
+    }, 500);
+  }
+</script>
+
+</body>
+</html>

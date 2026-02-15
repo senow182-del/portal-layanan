@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* RESET & BASE */
+  html, body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: transparent;
+  }
+
+  /* CONTAINER */
+  .container {
+    padding: 15px;
+    max-width: 600px; /* Sedikit diperlebar agar lega */
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* --- TOMBOL KEMBALI (MODERN KAPSUL) --- */
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    color: #205E6C;
+    border: 1px solid #205E6C;
+    padding: 8px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    margin-bottom: 25px; /* Jarak ke Judul */
+  }
+  .btn-back:hover {
+    background-color: #205E6C;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(32, 94, 108, 0.2);
+  }
+  
+  /* KARTU */
+  .card {
+    background: #205E6C;
+    color: white;
+    border-radius: 16px; /* Lebih membulat modern */
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(32, 94, 108, 0.15);
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); }
+
+  /* ICON */
+  .icon {
+    font-size: 26px;
+    background: rgba(255,255,255,0.2);
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* CONTENT */
+  .content { flex-grow: 1; min-width: 0; }
+  .title { font-size: 16px; font-weight: 700; margin-bottom: 4px; display: block; }
+  .desc { font-size: 12px; opacity: 0.9; margin-bottom: 10px; line-height: 1.3; }
+
+  /* TOMBOL */
+  .btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #205E6C;
+    text-decoration: none;
+    padding: 8px 18px; /* Area sentuh lebih besar */
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .btn:active { background: #e0e0e0; transform: scale(0.95); }
+
+  /* FOOTER INFO */
+  .footer-info {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f4f4f4; /* Background abu tipis agar beda dari bg situs */
+    border-radius: 8px;
+    border-left: 4px solid #205E6C;
+    display: flex; gap: 10px;
+  }
+  .footer-icon { font-size: 20px; }
+  .footer-text { font-size: 12px; line-height: 1.5; color: #444; } /* Warna Gelap */
+  .footer-title { font-weight: 700; display: block; color: #205E6C; margin-bottom: 2px; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="btn-back">
+    <span>❮</span> Menu Utama
+  </a>
+
+  <div class="card">
+    <div class="icon">❄️</div> <div class="content">
+      <div class="title">Kerusakan AC</div>
+      <div class="desc">AC panas, bocor, atau mati</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScr6CZJooTZyvTDafQXy90dAJpeuas9JOt1XVNhON_7kA9lNA/viewform?usp=pp_url&entry.997997004=AC" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon">🚿</div>
+    <div class="content">
+      <div class="title">Air & Pipa</div>
+      <div class="desc">Kran macet, air mati/keruh</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScr6CZJooTZyvTDafQXy90dAJpeuas9JOt1XVNhON_7kA9lNA/viewform?usp=pp_url&entry.997997004=Air+%26+Pipa" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon">🧹</div>
+    <div class="content">
+      <div class="title">Kebersihan</div>
+      <div class="desc">Kamar kotor / sampah menumpuk</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScr6CZJooTZyvTDafQXy90dAJpeuas9JOt1XVNhON_7kA9lNA/viewform?usp=pp_url&entry.997997004=Kebersihan" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="icon">💡</div> <div class="content">
+      <div class="title">Listrik & Perabot</div>
+      <div class="desc">Lampu putus, lemari rusak, dll</div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScr6CZJooTZyvTDafQXy90dAJpeuas9JOt1XVNhON_7kA9lNA/viewform?usp=pp_url&entry.997997004=Listrik+%26+Perabot" target="_blank" class="btn">LAPORKAN</a>
+    </div>
+  </div>
+
+  <div class="footer-info">
+    <div class="footer-icon">ℹ️</div>
+    <div class="footer-text">
+      <span class="footer-title">Alur Laporan</span>
+      Laporan Anda akan masuk ke WhatsApp teknisi jaga. Mohon tunggu respon maksimal 1x24 jam.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

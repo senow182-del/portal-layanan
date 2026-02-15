@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* --- 1. RESET & DASAR --- */
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: transparent;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  /* --- 2. HEADER --- */
+  .header-icon {
+    font-size: 42px;
+    margin-bottom: 8px;
+  }
+  
+  .header-title {
+    color: #205E6C;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  .header-subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 5px 0 20px 0;
+  }
+
+  /* --- 3. MENU GRID --- */
+  .menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* KARTU MENU STANDAR */
+  .menu-card {
+    background: #205E6C;
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 12px;
+    transition: transform 0.1s;
+  }
+  
+  .menu-card:active {
+    transform: scale(0.98);
+  }
+
+  /* WARNA KHUSUS KARTU DAYCARE */
+  .menu-card.daycare {
+    background: linear-gradient(135deg, #FF7043, #F4511E); /* Oranye Ceria */
+  }
+
+  /* ISI KARTU (ICON & TEXT) */
+  .card-icon {
+    font-size: 28px;
+    background: rgba(255,255,255,0.2);
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .card-content {
+    flex-grow: 1;
+  }
+  
+  .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+  }
+  
+  .card-desc {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  /* --- 4. TOMBOL DARURAT --- */
+  .emergency-card {
+    background: #D32F2F;
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px; /* Jarak dari menu di atasnya */
+    box-shadow: 0 4px 15px rgba(211,47,47,0.3);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+  }
+
+  /* --- 5. FOOTER --- */
+  .divider {
+    height: 1px;
+    background: #ddd;
+    margin: 25px 0 15px 0;
+  }
+  
+  .footer-notice {
+    background: #fdf2f2;
+    border-left: 4px solid #D32F2F;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: left;
+  }
+  
+  .notice-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #D32F2F;
+    margin-bottom: 3px;
+  }
+  
+  .notice-text {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="header-icon">🏢</div>
+  <h1 class="header-title">Portal Layanan Peserta</h1>
+  <p class="header-subtitle">Pusat Informasi & Bantuan</p>
+
+  <div class="menu-grid">
+    
+    <a href="asrama.html" class="menu-card">
+      <div class="card-icon">🏠</div>
+      <div class="card-content">
+        <span class="card-title">LAYANAN ASRAMA</span>
+        <span class="card-desc">Fasilitas & hunian</span>
+      </div>
+      <span>❯</span>
+    </a>
+
+    <a href="kelas.html" class="menu-card">
+      <div class="card-icon">🏫</div>
+      <div class="card-content">
+        <span class="card-title">LAYANAN KELAS</span>
+        <span class="card-desc">Pembelajaran & diklat</span>
+      </div>
+      <span>❯</span>
+    </a>
+
+    <a href="wifi.html" class="menu-card">
+      <div class="card-icon">📶</div>
+      <div class="card-content">
+        <span class="card-title">INTERNET & WI-FI</span>
+        <span class="card-desc">Kendala koneksi internet</span>
+      </div>
+      <span>❯</span>
+    </a>
+
+    <a href="kesehatan.html" class="menu-card">
+      <div class="card-icon">🚑</div>
+      <div class="card-content">
+        <span class="card-title">POS KESEHATAN</span>
+        <span class="card-desc">Obat P3K & sakit ringan</span>
+      </div>
+      <span>❯</span>
+    </a>
+
+    <a href="ramahanak.html" class="menu-card daycare">
+      <div class="card-icon">🧸</div>
+      <div class="card-content">
+        <span class="card-title">RUANG RAMAH ANAK</span>
+        <span class="card-desc">Daycare & area bermain</span>
+      </div>
+      <span>❯</span>
+    </a>
+
+  </div> 
+  <a href="tel:0800000004" class="emergency-card">
+    <span style="font-size: 20px;">🆘</span>
+    <div style="text-align: left;">
+      <div style="font-weight: 800; font-size: 14px;">PANGGILAN DARURAT</div>
+      <div style="font-size: 11px;">Klik untuk telepon petugas POS PAMDAL (24 Jam)</div>
+    </div>
+  </a>
+
+  <div class="divider"></div>
+
+  <div class="footer-notice">
+    <div class="notice-title">⚠️ Perhatian</div>
+    <div class="notice-text">
+      Tombol <b>DARURAT</b> khusus kondisi kritis. Untuk keluhan fasilitas, silakan klik menu yang tersedia di atas.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
