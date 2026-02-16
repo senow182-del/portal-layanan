@@ -239,7 +239,7 @@
   // ---------------------------------------------------------
   // 1. SCRIPT PENARIK DATA OBAT DARI GOOGLE SHEETS (CSV)
   // ---------------------------------------------------------
-  var sheetLinkCSV = "https://docs.google.com/spreadsheets/d/1X3dugIjPYg3r3UbCCZjNYTViiO35qiCHe0aXlXhHcj0/edit?usp=sharing"; 
+  var sheetLinkCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLJCoHgtUqQBuo7-Rwlbgnjt4yBhPUG0WnC8rY-MXPey3nOISj0B6afYZtLq6p4w-gFfisVNeox484/pub?gid=0&single=true&output=csv"; 
 
   fetch(sheetLinkCSV)
     .then(response => response.text())
@@ -254,8 +254,8 @@
   // ---------------------------------------------------------
   // 2. SCRIPT PENGIRIM FORMULIR (BESERTA FOTO) KE APPS SCRIPT
   // ---------------------------------------------------------
-  // PENTING: GANTI TEKS DI BAWAH INI DENGAN URL WEB APP KESEHATAN MILIK ANDA!
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwJqoYXlnuH-JMVtxEwVD21kREMyOC8s_21HIqp0Yuq-2SPrp_0V_ppDo0GW8rNVqSM/exec';
+  // PENTING: GANTI DENGAN URL WEB APP KESEHATAN ANDA
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw4opQ0NBlT8vf4DzdueTpK9CyP8LOnrFdvZo7ODPhC3t3guBUnKT47wtc4XDqhfnnU/exec';
   
   const form = document.forms['submit-to-google-sheet'];
   const btnSubmit = document.getElementById('btnSubmit');
@@ -288,6 +288,7 @@
   });
 
   function sendDataToGAS(formData, originalText) {
+    // Penambahan mode: 'no-cors' agar tidak diblokir browser
     fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
       .then(response => {
         alert('✅ Data berhasil dikirim! Petugas medis akan segera merespon atau mendatangi lokasi Anda.');
@@ -297,7 +298,7 @@
       })
       .catch(error => {
         alert('❌ Gagal mengirim laporan. Periksa koneksi internet Anda atau gunakan tombol darurat.');
-        console.error('Error!', error.message);
+        console.error('Error!', error);
         btnSubmit.innerHTML = originalText;
         btnSubmit.disabled = false;
       });
@@ -306,6 +307,7 @@
 
 </body>
 </html>
+
 
 
 
