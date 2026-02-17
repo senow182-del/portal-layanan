@@ -43,14 +43,13 @@
   .page-title { color: #205E6C; font-weight: 800; font-size: 22px; margin: 0; }
   .page-subtitle { font-size: 13px; color: #64748b; margin-top: 5px; }
 
-  /* 1. STATUS KARTU (DENGAN LABEL DIBUKA) */
+  /* 1. STATUS KARTU */
   .status-card {
     background: #E8F5E9; 
     border: 2px solid #4CAF50; 
     padding: 20px; border-radius: 16px; text-align: center;
     margin-bottom: 20px; color: #2E7D32; position: relative;
   }
-  
   .status-badge {
     background: #4CAF50; color: white;
     padding: 5px 15px; border-radius: 50px;
@@ -65,7 +64,7 @@
     background: linear-gradient(135deg, #FF7043, #F4511E);
     color: white; text-decoration: none; padding: 15px 20px;
     border-radius: 16px; display: flex; align-items: center; gap: 15px;
-    margin-bottom: 20px; box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+    margin-bottom: 25px; box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
     position: relative; overflow: hidden;
   }
   .cctv-icon { font-size: 28px; background: rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
@@ -75,27 +74,74 @@
   /* 3. LIST FASILITAS */
   .facility-box {
     background: white; border: 1px solid #e2e8f0;
-    padding: 15px; border-radius: 16px; margin-bottom: 25px;
+    padding: 15px; border-radius: 16px; margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: left;
   }
   .box-title { font-weight: 800; color: #333; margin-bottom: 15px; border-bottom: 2px solid #FFC107; display: inline-block; padding-bottom: 3px; }
-  
   .fac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .fac-item { background: #f8fafc; padding: 10px; border-radius: 8px; font-size: 12px; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #475569; }
 
   /* 4. TOMBOL LOKASI */
   .btn-map {
     background: #205E6C; color: white; text-decoration: none;
-    padding: 15px; border-radius: 16px;
+    padding: 15px; border-radius: 16px; margin-bottom: 35px;
     display: flex; flex-direction: column; 
     align-items: center; justify-content: center; gap: 4px;
     box-shadow: 0 4px 10px rgba(32, 94, 108, 0.2);
     transition: transform 0.2s;
   }
   .btn-map:hover { background: #1a4f5b; transform: translateY(-2px); }
-  
   .map-title { font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 8px; }
   .map-sub { font-size: 11px; opacity: 0.8; font-weight: 400; }
+
+  /* 5. FORMULIR PENITIPAN ANAK (DI BAWAH) */
+  .ticket-form-card {
+    background: #ffffff;
+    border: 2px dashed #cbd5e1; /* Gaya border dashed agar terlihat seperti kupon/tiket */
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    position: relative;
+  }
+
+  .form-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 20px; border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 12px;
+  }
+  .form-header-icon { font-size: 24px; }
+  .form-header-title { font-weight: 800; color: #205E6C; font-size: 18px; }
+
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block; font-size: 13px; font-weight: 700;
+    color: #475569; margin-bottom: 8px;
+  }
+  .form-group input[type="text"], 
+  .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid #cbd5e1;
+    border-radius: 10px; font-family: inherit; font-size: 14px;
+    box-sizing: border-box; background-color: #f8fafc; transition: all 0.2s;
+  }
+  .form-group input[type="text"]:focus, 
+  .form-group textarea:focus {
+    outline: none; border-color: #205E6C; background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(32, 94, 108, 0.1);
+  }
+  .form-group input[type="file"] {
+    width: 100%; padding: 10px; border: 1px dashed #cbd5e1;
+    border-radius: 10px; font-size: 12px; background-color: #f8fafc; color: #475569;
+  }
+
+  .btn-submit {
+    background: #205E6C; color: white; border: none; padding: 15px;
+    width: 100%; border-radius: 10px; font-weight: 800; font-size: 15px;
+    cursor: pointer; transition: background 0.2s; margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(32, 94, 108, 0.2);
+  }
+  .btn-submit:hover { background: #164652; transform: translateY(-2px); }
+  .btn-submit:disabled { background: #94a3b8; cursor: not-allowed; box-shadow: none; transform: none; }
 
 </style>
 </head>
@@ -146,7 +192,96 @@
     <div class="map-sub">(Berada di sebelah Kantin Gedung H)</div>
   </a>
 
+  <div class="ticket-form-card" id="form-reservasi">
+    <div class="form-header">
+      <div class="form-header-icon">📝</div>
+      <div class="form-header-title">Formulir Penitipan Anak</div>
+    </div>
+    
+    <form id="formAnak" name="submit-to-google-sheet">
+      <div class="form-group">
+        <label for="namaOrtu">Nama Orang Tua</label>
+        <input type="text" id="namaOrtu" name="namaOrtu" placeholder="Nama Peserta Diklat" required>
+      </div>
+
+      <div class="form-group">
+        <label for="namaAnak">Nama Anak & Usia</label>
+        <input type="text" id="namaAnak" name="namaAnak" placeholder="Contoh: Arka (3 Tahun)" required>
+      </div>
+
+      <div class="form-group">
+        <label for="jamTitip">Rencana Jam Penitipan</label>
+        <input type="text" id="jamTitip" name="jamTitip" placeholder="Contoh: 08.00 - 12.00" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="catatan">Catatan Khusus</label>
+        <textarea id="catatan" name="catatan" rows="2" placeholder="Contoh: Alergi makanan, jadwal minum susu, dll..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="foto">Foto Anak <span style="font-weight: normal; color: #64748b;">(Opsional)</span></label>
+        <input type="file" id="foto" accept="image/png, image/jpeg, image/jpg">
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 5px;">*Lampirkan foto anak untuk identifikasi petugas.</div>
+      </div>
+      
+      <button type="submit" class="btn-submit" id="btnSubmit">KIRIM RESERVASI</button>
+    </form>
+  </div>
+
 </div>
+
+<script>
+  // PENTING: GANTI DENGAN URL WEB APP 'RAMAH ANAK' ANDA
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyxHAx-T0qO7xcC-9-vhPmFCeeAD_5Bqc0t23nGfmNUPeFk3uCSHrdA1oLzB8Q6R8aCmA/exec';
+  
+  const form = document.forms['submit-to-google-sheet'];
+  const btnSubmit = document.getElementById('btnSubmit');
+  const fileInput = document.getElementById('foto');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault(); 
+    
+    const originalText = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = 'MENGIRIM... ⏳';
+    btnSubmit.disabled = true;
+
+    const formData = new FormData(form);
+    const file = fileInput.files[0];
+
+    if (file) {
+      btnSubmit.innerHTML = 'MENGUNGGAH FOTO... ⏳';
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64Data = event.target.result.split(',')[1];
+        formData.append('fileData', base64Data);
+        formData.append('mimeType', file.type);
+        formData.append('fileName', file.name);
+        
+        sendDataToGAS(formData, originalText);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      sendDataToGAS(formData, originalText);
+    }
+  });
+
+  function sendDataToGAS(formData, originalText) {
+    fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+      .then(response => {
+        alert('✅ Reservasi penitipan anak berhasil dikirim! Petugas Daycare akan segera menyiapkan tempat.');
+        form.reset(); 
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.disabled = false;
+      })
+      .catch(error => {
+        alert('❌ Gagal mengirim reservasi. Periksa koneksi internet Anda atau lapor manual ke petugas.');
+        console.error('Error!', error);
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.disabled = false;
+      });
+  }
+</script>
 
 </body>
 </html>
