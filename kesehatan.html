@@ -145,6 +145,24 @@
   .med-title { font-weight: 700; color: #333; margin-bottom: 5px; display: block; }
   .loading-text { color: #94a3b8; font-style: italic; }
 
+  /* =========================================
+     ANIMASI TRANSISI (LEBIH TERASA & ELEGAN)
+     ========================================= */
+  .container {
+    opacity: 0; /* Pastikan sembunyi dulu sebelum animasi mulai */
+    animation: fadeMasuk 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes fadeMasuk {
+    0% { 
+      opacity: 0; 
+      transform: translateY(40px) scale(0.96); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
+  }
 </style>
 </head>
 <body>
@@ -307,6 +325,7 @@
 
 </body>
 </html>
+
 
 
 
